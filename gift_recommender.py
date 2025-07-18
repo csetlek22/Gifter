@@ -2,13 +2,14 @@ import streamlit as st
 from datetime import datetime
 import json
 from groq import Groq
+import os
 
 # --- CONFIGURATION ---
-API_KEY = st.secrets["API_KEY"]
+
 MODEL_NAME = "llama3-70b-8192"
 
 # --- INIT GROQ CLIENT ---
-client = Groq(api_key=API_KEY)
+client = Groq(api_key=os.environ.get("API_KEY"))
 
 # --- INIT SESSION STATE ---
 if "liked_gifts" not in st.session_state:
